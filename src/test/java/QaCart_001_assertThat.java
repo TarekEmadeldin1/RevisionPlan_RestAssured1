@@ -8,7 +8,7 @@ public class QaCart_001_assertThat {
     given().baseUri("https://6489b0585fa58521cab00f99.mockapi.io/api/v1/users").
             when().get().
             then().log().all()
-            .statusCode(200).
+            .statusCode(200).time(Matchers.lessThan(3000L)).
             assertThat().body("[0].name",equalTo("Hope Hagenes")).
             assertThat().body("[0]",hasKey("name")).
             assertThat().body("id",hasSize(11)).
